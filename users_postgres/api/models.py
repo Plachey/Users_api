@@ -30,8 +30,8 @@ class UsersSchema(ma.Schema):
     username = fields.Str(required=True)
     email = fields.Email(required=True)
     password_hash = fields.Str(required=True)
-    user_address = fields.DateTime()
-    # create_user_date = fields.Str()
+    user_address = fields.Str()
+    # create_user_date = fields.DateTime()
 
     class Meta:
         fields = ('id', 'username', 'email', 'password_hash', 'user_address', 'create_user_date')

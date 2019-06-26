@@ -68,9 +68,9 @@ class UsersPut(Resource):
         #return requests.get(f'auth/sid/<{username}>').content
 
 
-def set_password(password):
-    Users.password_hash = bcrypt.generate_password_hash(password)
+def set_password(password_hash):
+    Users.password_hash = bcrypt.generate_password_hash(password_hash)
 
 
-def check_password(password):
-    return bcrypt.check_password_hash(Users.password_hash, password)
+def check_password(password_hash):
+    return bcrypt.check_password_hash(Users.password_hash, password_hash)
