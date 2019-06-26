@@ -3,6 +3,7 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy import text
 import datetime
 # from uuid import uuid4
+from marshmallow import fields
 
 
 class Users(db.Model):
@@ -16,15 +17,22 @@ class Users(db.Model):
 
     def __repr__(self):
         return '<User {}'.format(self.username)
-
+'''
     def set_password(self, password_hash):
         self.password_hash = bcrypt.generate_password_hash(password_hash)
 
     def check_password(self, password_hash):
         return bcrypt.check_password_hash(self.password_hash, password_hash)
-
+'''
 
 class UsersSchema(ma.Schema):
+    id = fields.UUID()
+    username = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password_hash = fields.Str(required=True)
+    user_address = fields.DateTime()
+    # create_user_date = fields.Str()
+
     class Meta:
         fields = ('id', 'username', 'email', 'password_hash', 'user_address', 'create_user_date')
 

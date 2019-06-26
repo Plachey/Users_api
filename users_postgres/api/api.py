@@ -14,5 +14,5 @@ usr_api.add_resource(UsersPost, '/users')
 
 # http GET http://localhost:5000/api/users/alice
 # http GET http://localhost:5000/api/users
-# http POST http://localhost:5000/api/users username=alice password_hash=dog email=alice@example.com address=Pushkina,27
+# http POST http://localhost:5000/api/users username=alice password_hash=dog email=alice@example.com user_address=Pushkina,27
 # http PUT http://localhost:5000/api/users/alice email=kolya@example.com
