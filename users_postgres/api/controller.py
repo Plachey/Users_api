@@ -1,10 +1,9 @@
-from flask import jsonify, url_for, request
+from flask import jsonify, request, abort
 from flask_restful import Resource
-
-from api import errors
-from manage import db, bcrypt
-from api.models import Users, user_schema, users_schema
 import requests
+from api.schema import users_schema, user_schema
+from api.models import Users
+from manage import db
 
 
 class UsersGetAll(Resource):
@@ -17,60 +16,41 @@ class UsersGetAll(Resource):
 class UsersGet(Resource):
     def get(self, username):
         user = Users.query.filter_by(username=username).first_or_404()
-        return user_schema.jsonify(user)
+        result = user_schema.dump(user)
+        return jsonify(result.data)
 
 
 class UsersPost(Resource):
     def post(self):
         data = request.get_json() or {}
-        #if 'username' not in data or 'email' not in data or 'password_hash' not in data:
-            #return errors.bad_request('must include username, email and password fields')
-        #if Users.query.filter_by(username=data['username']).first():
-            #return errors.bad_request('please use a different username')
-        #if Users.query.filter_by(email=data['email']).first():
-            #return errors.bad_request('please use a different email address')
         user = Users()
-        for field in ['username', 'email', 'user_address']:
-            if field in data:
-                setattr(user, field, data[field])
-        if 'password_hash' in data:
-            set_password(data['password_hash'])
+        result = user_schema.load(data)
+        from_model_atribure(data, user, result, new_user=True)
         db.session.add(user)
         db.session.commit()
-        response = user_schema.jsonify(user)
-        response.status_code = 201
-        response.headers['Location'] = url_for('api.usersget', username=user.username)
-        return response
+        return jsonify({'status': 'ok'})
 
 
 class UsersPut(Resource):
     def put(self, username):
-        #if self.auth_user(username) is 404:
-            #return errors.error_response(404)
+        auth = requests.get('auth/<{}>'.format(username))   # проверка авторизован польз. или нет
+        # if auth.status_code == 500:
+        if auth['status'] == 'failed':
+            return abort(500, 'User is not authorized')
 
         user = Users.query.filter_by(username=username).first_or_404()
         data = request.get_json() or {}
-        if 'username' in data and data['username'] != user.username and \
-                Users.query.filter_by(username=data['username']).first():
-            return errors.bad_request('please use a different username')
-        if 'email' in data and data['email'] != user.email and \
-                Users.query.filter_by(email=data['email']).first():
-            return errors.bad_request('please use a different email address')
-        for field in ['username', 'email', 'user_address']:
-            if field in data:
-                setattr(user, field, data[field])
-        if 'password_hash' in data:
-            set_password(data['password_hash'])
+        result = user_schema.load(data)
+        from_model_atribure(data, user, result)
         db.session.commit()
-        return user_schema.jsonify(user)
-
-    #def auth_user(self, username):
-        #return requests.get(f'auth/sid/<{username}>').content
+        return jsonify({'status': 'ok'})  # user_schema.jsonify(user)
 
 
-def set_password(password_hash):
-    Users.password_hash = bcrypt.generate_password_hash(password_hash)
-
-
-def check_password(password_hash):
-    return bcrypt.check_password_hash(Users.password_hash, password_hash)
+def from_model_atribure(data, user, result, new_user=False):
+    if result.errors != {}:
+        return abort(500, 'Incorrect data')
+    for field in ['username', 'email', 'user_address']:
+        if field in data:
+            setattr(user, field, data[field])
+    if new_user and 'password_hash' in data:
+        user.set_password(data['password_hash'])

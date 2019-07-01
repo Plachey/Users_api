@@ -19,7 +19,6 @@ Jinja2==2.10.1
 Mako==1.0.12
 MarkupSafe==1.1.1
 marshmallow==2.19.5
-marshmallow-sqlalchemy==0.17.0
 psycopg2==2.8.3
 pycparser==2.19
 Pygments==2.4.2
