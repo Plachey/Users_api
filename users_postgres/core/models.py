@@ -1,7 +1,7 @@
-from manage import db#, bcrypt
 from sqlalchemy.dialects.postgresql import UUID
 import datetime
 from uuid import uuid4
+from .config import db, bcrypt
 
 
 class Users(db.Model):
@@ -14,10 +14,10 @@ class Users(db.Model):
 
     def __repr__(self):
         return '<User {}'.format(self.username)
-'''
+
     def set_password(self, password):
         self.password_hash = bcrypt.generate_password_hash(password).decode('utf-8')
 
     def check_password(self, password):
         return bcrypt.check_password_hash(self.password_hash, password)
-'''
+

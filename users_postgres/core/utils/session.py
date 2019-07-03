@@ -3,9 +3,9 @@ from contextlib import contextmanager
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 
-from config import Config
+from ..config import postgres_uri
 
-engine = sqlalchemy.create_engine(Config.SQLALCHEMY_DATABASE_URI)
+engine = sqlalchemy.create_engine(postgres_uri())
 Session = sessionmaker(bind=engine)
 
 
