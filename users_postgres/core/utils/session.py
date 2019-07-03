@@ -3,7 +3,7 @@ from contextlib import contextmanager
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 
-from core.config import Config
+from config import Config
 
 engine = sqlalchemy.create_engine(Config.SQLALCHEMY_DATABASE_URI)
 Session = sessionmaker(bind=engine)

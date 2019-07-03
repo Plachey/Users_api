@@ -1,4 +1,4 @@
-#!"C:\Users\NT Алекс\Desktop\users_postgres\venv\Scripts\python.exe"
+#!H:\ss\users_postgres\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'alembic==1.0.10','console_scripts','alembic'
 __requires__ = 'alembic==1.0.10'
 import re

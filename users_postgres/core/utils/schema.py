@@ -1,12 +1,11 @@
 from marshmallow import Schema, fields
-# from marshmallow import ValidationError
 
 
 class UsersSchema(Schema):
     id = fields.UUID()
-    username = fields.Str()
-    email = fields.Email()
-    password_hash = fields.Str()
+    username = fields.Str(required=True)
+    email = fields.Email(required=True)
+    password_hash = fields.Str(required=True)
     user_address = fields.Str()
     create_user_date = fields.DateTime()
 

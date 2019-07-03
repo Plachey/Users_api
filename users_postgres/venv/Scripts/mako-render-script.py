@@ -1,4 +1,4 @@
-#!"C:\Users\NT Алекс\Desktop\users_postgres\venv\Scripts\python.exe"
+#!H:\ss\users_postgres\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'Mako==1.0.12','console_scripts','mako-render'
 __requires__ = 'Mako==1.0.12'
 import re

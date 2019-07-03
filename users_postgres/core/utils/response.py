@@ -1,4 +1,3 @@
-'''
 from flask import Response, jsonify
 
 
@@ -8,4 +7,3 @@ class MyResponse(Response):
         if isinstance(rspon, dict):
             rspon = jsonify(rspon)
         return super(MyResponse, cls).force_type(rspon, environ)
-'''
