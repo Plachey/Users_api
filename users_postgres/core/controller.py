@@ -1,7 +1,8 @@
 from flask import request, abort
 from flask_restful import Resource
-from .utils.schema import users_schema, user_schema
+
 from .models import Users
+from .utils.schema import users_schema, user_schema
 from .utils.session import session
 
 
@@ -35,7 +36,7 @@ class UsersPutGet(Resource):
 
 def from_model_atribure(data, user, result=None):
     if result is not None and result.errors != {}:
-        return abort(401, 'Incorrect data')
+        return abort(400, 'Incorrect data')
     for field in ['username', 'email', 'user_address']:
         if field in data:
             setattr(user, field, data[field])

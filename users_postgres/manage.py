@@ -1,9 +1,8 @@
-from flask_script import Manager, Shell
 from flask_migrate import MigrateCommand
+from flask_script import Manager, Shell
 
 from core.app import app
 from core.config import db
-
 from core.models import Users
 
 manager = Manager(app)

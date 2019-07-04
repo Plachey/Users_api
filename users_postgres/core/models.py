@@ -1,6 +1,8 @@
-from sqlalchemy.dialects.postgresql import UUID
 import datetime
 from uuid import uuid4
+
+from sqlalchemy.dialects.postgresql import UUID
+
 from .config import db, bcrypt
 
 
