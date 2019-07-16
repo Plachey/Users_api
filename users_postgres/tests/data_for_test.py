@@ -1,48 +1,39 @@
 data_all_users = {
-    "Users": [
+    "users": [
         {
-            "create_user_date": "2019-07-03T08:46:47.255416+00:00",
-            "email": "alice@google.com",
-            "id": "1c14ff25-2eda-48cc-879e-c403050238b2",
-            "password_hash": "$2b$12$rySi.WauuSsKEhlo4NGgX.AcYPaNQ6V1NB/Ab8eBqrRcrrUKfQgp6",
-            "user_address": "Pushkina,27",
-            "username": "alice"
+            'create_user_date': '2019-07-15T13:01:49.251701+00:00',
+            'email': 'alice@example.com',
+            'id': 'adcfa420-70dc-4287-a0ca-b9e35d015250',
+            'password': 'pbkdf2:sha256:150000$a2DQXJuc$b6b16834ce1e656eeaf9f538aa2336566896a272d54266b5e7602122c748bb44',
+            'user_address': 'Pushkina,27',
+            'username': 'alice'
         },
         {
-            "create_user_date": "2019-07-03T08:46:47.255416+00:00",
-            "email": "sasha@google.com",
-            "id": "5041cfa3-b440-453e-83ae-f87a00e2a5c4",
-            "password_hash": "$2b$12$7QuE541nnjTWA.v5VqlUB.Rq7INg6AYzuQx7Vb/mcyl7SIoqDM9qO",
-            "user_address": "Kirova,6",
-            "username": "sasha"
+            'create_user_date': '2019-07-15T13:01:49.251701+00:00',
+            'email': 'petya@example.com',
+            'id': 'b1c1c969-f2e9-485b-8e0f-cda97c5679a5',
+            'password': 'pbkdf2:sha256:150000$Xbb2hqH6$5fd69f20e54b34a3742ff37e4d75f9a2500b721c6bb33cfb69a1feee1e16f4bb',
+            'user_address': 'Kurchatova,2',
+            'username': 'petya'
         },
         {
-            "create_user_date": "2019-07-03T08:46:47.255416+00:00",
-            "email": "pasha@google.com",
-            "id": "9f4ce851-961e-4d9a-aa27-519b54215472",
-            "password_hash": "$2b$12$L82GMJXk7LAh9hZ7t4rMcego8eC6REhgySwBzFyoJ90quanwPtx0W",
-            "user_address": "Levanevskogo,15",
-            "username": "pasha"
-        },
-        {
-            "create_user_date": "2019-07-03T13:25:11.145977+00:00",
-            "email": "michele@example.com",
-            "id": "ba207077-2262-4eb2-b69b-c6abd5580dfc",
-            "password_hash": "$2b$12$mhlqhVyxT7koxz2NKFlh0.RxU.hFe/PPn9HKVEYyiFwslqdfbZzqG",
-            "user_address": "Rodina,8",
-            "username": "michele"
+            'create_user_date': '2019-07-15T13:01:49.251701+00:00',
+            'email': 'kolya@gmail.com',
+            'id': 'e137676a-539e-4578-8656-b789d44a7f88',
+            'password': 'pbkdf2:sha256:150000$h0gzy338$41c21c01c9d5b8927948e387884fa0a61c8002f6fa4e26290ebb1429ca3369ba',
+            'user_address': 'kirova,4',
+            'username': 'kolya'
         }
     ]
 }
 
+
 data_user = {
-    "User":
-        {
-            "id": "1c14ff25-2eda-48cc-879e-c403050238b2",
-            "username": "alice",
-            "password_hash": "$2b$12$rySi.WauuSsKEhlo4NGgX.AcYPaNQ6V1NB/Ab8eBqrRcrrUKfQgp6",
-            "user_address": "Pushkina,27",
-            "email": "alice@google.com",
-            "create_user_date": "2019-07-03T08:46:47.255416+00:00"
-        }
+    "create_user_date": "2019-07-11T10:03:18.674207+00:00",
+    "email": "alice@example.com",
+    "id": "ff766fb5-3c14-4b5c-852f-edbf3c69edd5",
+    "user_address": "Pushkina,27",
+    "username": "alice"
 }
+
+

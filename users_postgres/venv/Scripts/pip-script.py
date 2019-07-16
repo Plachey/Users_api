@@ -1,4 +1,4 @@
-#!H:\ss\users_postgres\venv\Scripts\python.exe
+#!"C:\Users\NT Алекс\Desktop\43\users_postgres\venv\Scripts\python.exe" -x
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==10.0.1','console_scripts','pip'
 __requires__ = 'pip==10.0.1'
 import re
