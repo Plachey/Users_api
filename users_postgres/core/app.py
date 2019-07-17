@@ -17,6 +17,7 @@ app.register_blueprint(bp, url_prefix='/users')
 usr_api.add_resource(UsersResourceCreate, '/api/users')
 usr_api.add_resource(UsersResourceChange, '/api/<id>')
 
+
 '''
 from flask import g
 from sqlalchemy.orm import sessionmaker
