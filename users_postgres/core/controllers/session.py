@@ -9,7 +9,7 @@ Session = scoped_session(session_factory)
 
 def connect_session_db(func):
     def inner(*args, **kwargs):
-        session = Session()  # with all the requirements
+        session = Session()
         try:
             data = func(*args, **kwargs)
             session.commit()

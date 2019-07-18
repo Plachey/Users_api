@@ -32,16 +32,16 @@ class UsersSchemaPatch(Schema):
     class Meta:
         fields = ('username', 'email', 'password', 'user_address')
 
-
+'''
 class UsersSchemaAuth(Schema):
     username = fields.Str(required=True)
     password = fields.Str(required=True)
 
     class Meta:
         fields = ('username', 'password')
-
+'''
 
 user_schema_put = UsersSchemaPut()
 user_schema = UsersSchema()
-user_schema_auth = UsersSchemaAuth()
 user_schema_patch = UsersSchemaPatch()
+# user_schema_auth = UsersSchemaAuth()
