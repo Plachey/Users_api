@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 import logging
 
-from core.constants import APP_ENV_DEV, APP_ENV_PROD
+from core.constants import APP_ENV_DEV, APP_ENV_PROD, APP_ENV_TEST
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -30,6 +30,7 @@ class TestConfig(Config):
     DB_HOST = os.environ.get('DB_HOST', 'localhost')
     DB_PORT = os.environ.get('DB_PORT', 5432)
     SQLALCHEMY_DATABASE_URI = f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DEFAULT_DB}'
+    DEBUG = False
 
 
 class ProdConfig(Config):
@@ -44,5 +45,7 @@ def runtime_config():
     env = os.environ.get("APP_ENV", APP_ENV_DEV).strip().lower()
     if env == APP_ENV_PROD:
         return ProdConfig
+    elif env == APP_ENV_TEST:
+        return TestConfig
 
     return DevConfig

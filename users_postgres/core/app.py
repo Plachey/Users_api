@@ -1,5 +1,5 @@
 from core.api import usr_api, bp
-from core.resources.resources import UsersResourceCreate, UsersResourceChange
+from core.resources.resources import UsersResourceCreate, UsersResourceChange, UsersResourceAuth
 
 
 from flask import Flask
@@ -13,3 +13,4 @@ app.register_blueprint(bp, url_prefix='/users')
 
 usr_api.add_resource(UsersResourceCreate, '/api/users')
 usr_api.add_resource(UsersResourceChange, '/api/<id>')
+usr_api.add_resource(UsersResourceAuth, '/api/authentication')

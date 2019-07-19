@@ -36,10 +36,12 @@ class UsersController:
         session = Session()
         if errors:
             abort(404, f'Invalid data: {errors}')
+
         username = data["username"]
         email = data["email"]
         user_address = data["user_address"]
         password = set_password(data["password"], Users)
+
         user = Users(username=username, email=email, password=password, user_address=user_address)
         session.add(user)
         return username
@@ -50,8 +52,10 @@ class UsersController:
         user = Users.query.filter(Users.id == id).first()
         if not user:
             abort(404, 'No user with that id')
+
         if errors:
             abort(404, f'Invalid data{errors}')
+
         session.query(Users).filter(Users.id == id).update({
             "username": data["username"],
             "email": data["email"],
@@ -83,16 +87,16 @@ class UsersController:
             abort(404, 'No user with that id')
         return user
 
-    '''
-    def post_auth(self, id, data, errors):
-        user = db.session.query(Users).filter_by(id=id).first()
-        if not user:
-            abort(404, 'No user with that id')
-        if self._errors:
+    def post_auth(self, data, errors):
+        if errors:
             abort(404, f'Invalid data{errors}')
         username = data['username']
+
+        user = Users.query.filter(Users.username == username).first()
+        if not user:
+            abort(404, 'No user with that id')
         password = check_password(user.password, data['password'])
+
         if username != user.username or password is False:
             abort(404, 'Incorrect username or password')
         return user
-    '''

@@ -2,7 +2,7 @@ from flask import request
 from flask_restful import Resource
 
 from core.models import Users
-from core.utils.schema import user_schema, user_schema_put, user_schema_patch#, user_schema_auth
+from core.utils.schema import user_schema, user_schema_put, user_schema_patch, user_schema_auth
 from core.controllers.controllers import answer_resource_methods
 from core.controllers.controllers import UsersController
 
@@ -10,7 +10,7 @@ from core.controllers.controllers import UsersController
 class UsersResourceCreate(Resource):
     def get(self):
         all_users = UsersController().get_all()
-        return user_schema.dump(all_users, many=True).data
+        return user_schema.dump(all_users, many=True).data, 200
 
     def post(self):
         data = request.get_json() or {}
@@ -37,10 +37,10 @@ class UsersResourceChange(Resource):
         user = UsersController().get_user(id)
         return answer_resource_methods(user_schema.dump(user).data), 200
 
-    '''
-    def post(self, id):
+
+class UsersResourceAuth(Resource):
+    def post(self):
         data = request.get_json() or {}
-        result, errors = user_schema_authorization.load(data)
-        user_check_authoriz = UsersController.post_auth(id, result, errors)
+        result, errors = user_schema_auth.load(data)
+        user_check_authoriz = UsersController().post_auth(result, errors)
         return answer_resource_methods(user_schema.dump(user_check_authoriz).data), 200
-    '''

@@ -1,3 +1,4 @@
+'''
 data_all_users = {
     "users": [
         {
@@ -26,14 +27,23 @@ data_all_users = {
         }
     ]
 }
+'''
+data_all_users = [
+    {
+        'create_user_date': '2019-07-15T13:01:49.251701+00:00',
+        'email': 'kolya@gmail.com',
+        'id': 'e137676a-539e-4578-8656-b789d44a7f88',
+        'password': 'pbkdf2:sha256:150000$h0gzy338$41c21c01c9d5b8927948e387884fa0a61c8002f6fa4e26290ebb1429ca3369ba',
+
+    }
+]
 
 
-data_user = {
-    "create_user_date": "2019-07-11T10:03:18.674207+00:00",
-    "email": "alice@example.com",
-    "id": "ff766fb5-3c14-4b5c-852f-edbf3c69edd5",
-    "user_address": "Pushkina,27",
-    "username": "alice"
+test_data_post = {
+    'username': 'nina',
+    'password': '1',
+    'email': 'nina@example.com',
+    'user_address': 'Lenina,6',
 }
 
 
